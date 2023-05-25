@@ -11,3 +11,4 @@ app.use("/entry", EntryRouter);
 
 app.listen(port, () => console.log(`listening to port ${port}`))
 
+//removed the app.get("/", (req, res) => res.send("helloWorld"))
