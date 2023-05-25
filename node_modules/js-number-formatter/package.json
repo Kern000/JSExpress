@@ -1,0 +1,28 @@
+{
+  "name": "js-number-formatter",
+  "version": "1.0.1",
+  "description": "A javascript module that scans through string to remove non-numerals and formats out any found numbers based on configuration passed to it.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lolu-sholar/js-number-formatter.git"
+  },
+  "keywords": [
+    "number",
+    "format",
+    "number",
+    "from",
+    "string",
+    "thousand",
+    "separator"
+  ],
+  "author": "Lana Olushola",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lolu-sholar/js-number-formatter/issues"
+  },
+  "homepage": "https://github.com/lolu-sholar/js-number-formatter#readme"
+}

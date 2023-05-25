@@ -1,0 +1,19 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "http-status": "^1.6.2",
+    "js-number-formatter": "^1.0.1",
+    "nodemon": "^2.0.22",
+    "uuid": "^9.0.0"
+  }
+}
