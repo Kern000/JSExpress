@@ -1,6 +1,7 @@
 const {v4: uuidv4} = require("uuid")
 
 const httpStatus = require("http-status")
+
 let data = [];
 
 // note that data has been changed from const to let to use filter method reassignment
@@ -58,6 +59,14 @@ const updateOne = (req, res) => {
     }
 }
 
+// This is iterating over the payload. Can update based on this. Becareful of copy and pasting from webpage, it may return JSON syntax error.
+// {
+//     "activity":"99 push up",
+//     "intensityRating":4
+//   }
+// Also, based on how we are modifying, we are only modifying the value, not the key
+
+
 const deleteOne = (req, res) => {
 
     const foundByID = data.find((item) => item.id === req.params.id)
@@ -66,7 +75,7 @@ const deleteOne = (req, res) => {
 
         const findIndex = data.findIndex((item) => item.id === req.params.id)
 
-        if (findIndex > 0) {
+        if (findIndex >= 0) {
             
             data.splice(findIndex, 1)
 
@@ -78,6 +87,32 @@ const deleteOne = (req, res) => {
     }
   }
 }
+
+const deleteByDate = (req, res) => {
+
+    const foundByDate = data.find((item) => item.currentDate === req.params.currentDate)
+
+    if (foundByDate) {
+
+        const findIndex2 = data.findIndex((item) => item.currentDate === req.params.currentDate)
+
+        if  (findIndex2 >= 0) {
+
+            data.splice(findIndex2, 1)
+        
+        return res.sendStatus(httpStatus.OK)
+        }
+
+        else {
+
+            return res.sendStatus(httpStatus.NOT_FOUND)
+        }
+    }
+}
+        
+
+
+
 
 
 const deleteEntriesWithID = (req, res) => {
@@ -101,25 +136,30 @@ if (foundByID){
 
 const deleteProperty = (req, res) => {
 
-    const dataToDeleteProperty = req.body;
+    const propertyToDelete = req.body
 
     const foundByID = data.find((item) => item.id === req.params.id)
 
     if (foundByID){
 
-        for (const property in dataToDeleteProperty){
-            
+        for (const property in propertyToDelete){
+        
             if (foundByID.hasOwnProperty(property)){
 
             delete foundByID[property]
+
+            return res.sendStatus(httpStatus.OK)
+
+            }
+
+            else {
+            
+            return res.send("No property found")
             }
         }
-
         // delete function deletes both the property key and value
-
-        return res.sendStatus(httpStatus.OK)
-
-    } else {
+    }
+    else {
         
         return res.sendStatus(httpStatus.NOT_FOUND)
     }
@@ -134,5 +174,6 @@ module.exports = {
     updateOne,
     deleteOne,
     deleteProperty,
-    deleteEntriesWithID
+    deleteEntriesWithID,
+    deleteByDate
 }

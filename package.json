@@ -14,6 +14,7 @@
     "http-status": "^1.6.2",
     "js-number-formatter": "^1.0.1",
     "nodemon": "^2.0.22",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "uuid-random": "^1.3.2"
   }
 }
